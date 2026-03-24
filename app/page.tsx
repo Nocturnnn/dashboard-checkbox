@@ -7,22 +7,25 @@ import { statCards } from "@/data/dashboard";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#b7d49b] p-4 md:p-8">
-      <div className="mx-auto grid min-h-[92vh] max-w-[1500px] grid-cols-1 gap-4 rounded-[36px] bg-black p-4 shadow-[0_30px_90px_rgba(0,0,0,0.45)] md:grid-cols-[84px_1fr] md:p-6">
+    <main className="min-h-screen p-4 md:p-8 xl:p-10">
+      <div className="mx-auto grid min-h-[92vh] max-w-[1500px] grid-cols-1 gap-5 rounded-[40px] bg-[#091122] p-5 shadow-[0_36px_90px_rgba(15,28,57,0.38)] md:grid-cols-[92px_1fr] md:p-7">
         <Sidebar />
 
-        <section className="rounded-[28px] bg-black text-white">
+        <section className="rounded-[30px] bg-[#0c162d] px-5 py-5 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] md:px-7 md:py-6">
           <Topbar />
 
-          <div className="mt-8">
-            <h1 className="text-4xl font-black uppercase tracking-tight md:text-6xl">
-              Check Box
+          <div className="mt-10 flex flex-wrap items-end justify-between gap-4">
+            <h1 className="text-4xl font-extrabold uppercase tracking-tight md:text-6xl">
+              Noc Checkbox
             </h1>
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#324466] bg-[#111d38] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#9cb6ef]">
+              Fase 1 • Visual
+            </div>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 gap-4 xl:grid-cols-[1.05fr_1fr]">
-            <div className="grid gap-4">
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="mt-10 grid grid-cols-1 gap-5 xl:grid-cols-[1.05fr_1fr]">
+            <div className="grid gap-5">
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                 {statCards.map((card) => (
                   <StatCard key={card.title} {...card} />
                 ))}
