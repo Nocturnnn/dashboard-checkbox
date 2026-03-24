@@ -54,12 +54,12 @@ const neutralData: BubblePoint[] = [
 
 export default function BubbleChartCard() {
   return (
-    <div className="rounded-[28px] border border-white/10 bg-[#171717] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
+    <div className="rounded-[30px] border border-[#263a60] bg-[#111d36] p-6 shadow-[0_18px_50px_rgba(4,10,27,0.45)]">
       <div className="mb-6 flex items-center justify-between">
-        <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-white/90">
+        <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-[#d4def8]">
           Product
         </h3>
-        <span className="text-white/40">•••</span>
+        <span className="text-[#6f84ad]">•••</span>
       </div>
 
       <div className="h-[280px]">
@@ -83,24 +83,24 @@ export default function BubbleChartCard() {
             />
             <ZAxis type="number" dataKey="z" range={[80, 900]} />
             <Tooltip cursor={false} />
-            <Scatter data={neutralData} fill="#f5f5f5" />
-            <Scatter data={validData} fill="#b9ff66" />
-            <Scatter data={invalidData} fill="#ffa62b" />
+            <Scatter data={neutralData} fill="#d9e3fb" />
+            <Scatter data={validData} fill="#78d9a2" />
+            <Scatter data={invalidData} fill="#7da7ff" />
           </ScatterChart>
         </ResponsiveContainer>
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center gap-5 text-xs text-white/60">
+      <div className="mt-4 flex flex-wrap items-center gap-5 text-xs text-[#9cb1d7]">
         <div className="flex items-center gap-2">
-          <span className="h-3 w-3 rounded-full bg-white" />
+          <span className="h-3 w-3 rounded-full bg-[#d9e3fb]" />
           Resources
         </div>
         <div className="flex items-center gap-2">
-          <span className="h-3 w-3 rounded-full bg-lime-400" />
+          <span className="h-3 w-3 rounded-full bg-[#78d9a2]" />
           Valid
         </div>
         <div className="flex items-center gap-2">
-          <span className="h-3 w-3 rounded-full bg-orange-400" />
+          <span className="h-3 w-3 rounded-full bg-[#7da7ff]" />
           Invalid
         </div>
       </div>
