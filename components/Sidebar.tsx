@@ -1,22 +1,29 @@
 "use client";
 
-import { Heart, CalendarDays, Gem, Settings, Plus, ShieldCheck } from "lucide-react";
+import {
+  CalendarDays,
+  Gem,
+  Heart,
+  Plus,
+  Settings,
+  ShieldCheck,
+} from "lucide-react";
 
 const items = [Heart, CalendarDays, Gem, Settings];
 
 export default function Sidebar() {
   return (
-    <aside className="flex h-full w-[92px] flex-col items-center justify-between rounded-[30px] border border-[#23385f] bg-[#0a1428] py-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
-      <div className="flex flex-col items-center gap-6">
-        <div className="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-[#83b8ff] to-[#6f6bf8] text-white shadow-[0_14px_30px_rgba(100,128,255,0.45)]">
+    <aside className="flex h-full flex-row items-center justify-between rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(10,20,37,0.9),rgba(7,14,26,0.92))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] md:w-[92px] md:flex-col md:py-7">
+      <div className="flex items-center gap-4 md:flex-col md:gap-6">
+        <div className="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-[#83d7ff] via-[#6f8dff] to-[#63f0bb] text-white shadow-[0_14px_30px_rgba(100,128,255,0.45)]">
           <ShieldCheck size={22} />
         </div>
 
-        <div className="mt-4 flex flex-col gap-4">
+        <div className="flex flex-1 items-center gap-3 md:mt-4 md:flex-col md:gap-4">
           {items.map((Icon, index) => (
             <button
               key={index}
-              className="grid h-12 w-12 place-items-center rounded-full border border-[#2b3d61] bg-[#131f39] text-[#b6c7eb] transition hover:bg-[#1a2d4e] hover:text-white"
+              className="grid h-11 w-11 place-items-center rounded-full border border-white/8 bg-white/[0.04] text-[#b6c7eb] transition duration-300 hover:-translate-y-0.5 hover:bg-white/[0.08] hover:text-white"
             >
               <Icon size={18} />
             </button>
@@ -24,7 +31,7 @@ export default function Sidebar() {
         </div>
       </div>
 
-      <button className="grid h-12 w-12 place-items-center rounded-full border border-[#334c78] bg-[#172647] text-white transition hover:bg-[#1f3460]">
+      <button className="grid h-12 w-12 place-items-center rounded-full border border-cyan-300/20 bg-cyan-300/10 text-white transition duration-300 hover:scale-105 hover:bg-cyan-300/16">
         <Plus size={20} />
       </button>
     </aside>

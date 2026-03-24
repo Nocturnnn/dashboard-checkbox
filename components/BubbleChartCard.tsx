@@ -1,109 +1,71 @@
 "use client";
 
-import {
-  ResponsiveContainer,
-  ScatterChart,
-  Scatter,
-  XAxis,
-  YAxis,
-  ZAxis,
-  Tooltip,
-} from "recharts";
+import GlassCard from "@/components/GlassCard";
+import { productHealth } from "@/data/dashboard";
 
-type BubblePoint = {
-  x: number;
-  y: number;
-  z: number;
+const toneClasses = {
+  good: "from-[#58e2b2] to-[#76c7ff]",
+  info: "from-[#6bc0ff] to-[#7d87ff]",
+  warning: "from-[#ff9f5a] to-[#ffd36f]",
 };
-
-const validData: BubblePoint[] = [
-  { x: 1, y: 52, z: 200 },
-  { x: 2, y: 96, z: 340 },
-  { x: 3, y: 48, z: 260 },
-  { x: 4, y: 80, z: 320 },
-  { x: 5, y: 34, z: 180 },
-  { x: 6, y: 92, z: 350 },
-  { x: 7, y: 58, z: 240 },
-  { x: 8, y: 84, z: 300 },
-  { x: 9, y: 36, z: 170 },
-];
-
-const invalidData: BubblePoint[] = [
-  { x: 1, y: 31, z: 240 },
-  { x: 2, y: 25, z: 140 },
-  { x: 3, y: 51, z: 220 },
-  { x: 4, y: 49, z: 180 },
-  { x: 5, y: 67, z: 300 },
-  { x: 6, y: 28, z: 160 },
-  { x: 7, y: 20, z: 120 },
-  { x: 8, y: 39, z: 200 },
-  { x: 9, y: 72, z: 330 },
-];
-
-const neutralData: BubblePoint[] = [
-  { x: 1, y: 60, z: 100 },
-  { x: 2, y: 20, z: 90 },
-  { x: 3, y: 44, z: 110 },
-  { x: 4, y: 70, z: 95 },
-  { x: 5, y: 56, z: 105 },
-  { x: 6, y: 40, z: 90 },
-  { x: 7, y: 80, z: 120 },
-  { x: 8, y: 26, z: 85 },
-  { x: 9, y: 62, z: 100 },
-];
 
 export default function BubbleChartCard() {
   return (
-    <div className="rounded-[30px] border border-[#263a60] bg-[#111d36] p-6 shadow-[0_18px_50px_rgba(4,10,27,0.45)]">
-      <div className="mb-6 flex items-center justify-between">
-        <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-[#d4def8]">
-          Product
-        </h3>
-        <span className="text-[#6f84ad]">•••</span>
-      </div>
+    <GlassCard
+      title="Product"
+      eyebrow="Service mix"
+      actionLabel="Capacity"
+      className="bg-[linear-gradient(180deg,rgba(13,25,45,0.96),rgba(10,17,34,0.92))]"
+    >
+      <div className="grid gap-4">
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <p className="text-3xl font-black tracking-tight text-white md:text-4xl">
+              84%
+            </p>
+            <p className="mt-2 text-sm text-[#a3bbde]">
+              product stability across critical paths
+            </p>
+          </div>
+          <div className="rounded-[22px] border border-cyan-300/15 bg-cyan-300/8 px-4 py-3 text-right">
+            <p className="text-[10px] uppercase tracking-[0.22em] text-[#8cb7d7]">
+              Risk spread
+            </p>
+            <p className="mt-1 text-2xl font-bold text-[#eff7ff]">12 nodes</p>
+          </div>
+        </div>
 
-      <div className="h-[280px]">
-        <ResponsiveContainer width="100%" height="100%">
-          <ScatterChart margin={{ top: 10, right: 10, bottom: 10, left: 0 }}>
-            <XAxis
-              type="number"
-              dataKey="x"
-              tick={false}
-              axisLine={false}
-              tickLine={false}
-              domain={[0, 10]}
-            />
-            <YAxis
-              type="number"
-              dataKey="y"
-              tick={false}
-              axisLine={false}
-              tickLine={false}
-              domain={[0, 100]}
-            />
-            <ZAxis type="number" dataKey="z" range={[80, 900]} />
-            <Tooltip cursor={false} />
-            <Scatter data={neutralData} fill="#d9e3fb" />
-            <Scatter data={validData} fill="#78d9a2" />
-            <Scatter data={invalidData} fill="#7da7ff" />
-          </ScatterChart>
-        </ResponsiveContainer>
-      </div>
+        <div className="rounded-[24px] border border-white/8 bg-white/[0.03] p-4">
+          <div className="flex items-center justify-between">
+            <p className="text-[11px] uppercase tracking-[0.18em] text-[#8ca7cf]">
+              Service health
+            </p>
+            <p className="text-xs text-[#cfe2ff]">labels inside bars</p>
+          </div>
 
-      <div className="mt-4 flex flex-wrap items-center gap-5 text-xs text-[#9cb1d7]">
-        <div className="flex items-center gap-2">
-          <span className="h-3 w-3 rounded-full bg-[#d9e3fb]" />
-          Resources
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="h-3 w-3 rounded-full bg-[#78d9a2]" />
-          Valid
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="h-3 w-3 rounded-full bg-[#7da7ff]" />
-          Invalid
+          <div className="mt-4 grid gap-3">
+            {productHealth.map((item) => (
+              <div key={item.label} className="grid gap-1.5">
+                <div className="flex items-center justify-between text-xs text-[#b7caea]">
+                  <span>{item.label}</span>
+                  <span>{item.trend}</span>
+                </div>
+                <div className="h-11 overflow-hidden rounded-full border border-white/8 bg-[#08111f] p-1">
+                  <div
+                    className={`flex h-full items-center justify-between rounded-full bg-gradient-to-r px-4 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(73,138,255,0.24)] ${toneClasses[item.tone]}`}
+                    style={{ width: `${item.value}%` }}
+                  >
+                    <span>{item.label}</span>
+                    <span className="text-[11px] font-bold tracking-[0.12em]">
+                      {item.value}%
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </GlassCard>
   );
 }
