@@ -48,7 +48,9 @@ export default function TimelineChartCard() {
                   {item.label}
                 </p>
               </div>
-              <p className="mt-3 text-3xl font-black text-white">{item.value}</p>
+              <p className="mt-3 text-3xl font-black text-white">
+                {item.value}
+              </p>
               <p className="mt-1 text-xs text-[#9db4d8]">{item.helper}</p>
             </div>
           ))}
@@ -102,7 +104,9 @@ export default function TimelineChartCard() {
                   position="inside"
                   fill="#ecf6ff"
                   fontSize={10}
-                  formatter={(value: number) => (value > 0 ? `P ${value}` : "")}
+                  formatter={(value) =>
+                    typeof value === "number" && value > 0 ? `P ${value}` : ""
+                  }
                 />
               </Bar>
               <Bar
@@ -116,7 +120,9 @@ export default function TimelineChartCard() {
                   position="insideRight"
                   fill="#17314f"
                   fontSize={10}
-                  formatter={(value: number) => (value > 0 ? `W ${value}` : "")}
+                  formatter={(value) =>
+                    typeof value === "number" && value > 0 ? `P ${value}` : ""
+                  }
                 />
               </Bar>
             </BarChart>
@@ -129,7 +135,10 @@ export default function TimelineChartCard() {
               key={label}
               className="inline-flex items-center gap-2 rounded-full border border-white/8 bg-white/[0.03] px-3 py-2"
             >
-              <span className="h-2.5 w-7 rounded-full" style={{ backgroundColor: color }} />
+              <span
+                className="h-2.5 w-7 rounded-full"
+                style={{ backgroundColor: color }}
+              />
               {label}
             </div>
           ))}
